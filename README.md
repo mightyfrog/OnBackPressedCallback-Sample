@@ -4,7 +4,7 @@
 val callback = object : OnBackPressedCallback(true) {
     override fun handleOnBackPressed() {
         if (some-condition-here) {
-            // your fragment onBackPressed logic
+            // your fragment onBackPressed() behavior
         } else {
             // default onBackPressed() behavior
             isEnabled = false // DON'T FORGET THIS!
