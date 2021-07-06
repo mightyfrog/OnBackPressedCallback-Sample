@@ -16,13 +16,14 @@ import org.mightyfrog.android.onbackpressedcallbacksample.databinding.FragmentFi
  */
 class FirstFragment : Fragment() {
 
-    private lateinit var binding: FragmentFirstBinding
+    private var _binding: FragmentFirstBinding? = null
+    private val binding: FragmentFirstBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentFirstBinding.inflate(inflater)
+    ): View {
+        _binding = FragmentFirstBinding.inflate(inflater)
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -51,5 +52,11 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.webView.loadUrl("https://www.google.com/")
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+
+        super.onDestroyView()
     }
 }
